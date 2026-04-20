@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT programa (variable, ciclo, condicional)>
+
+<!ELEMENT variable EMPTY>
+<!ATTLIST variable
+    nombre CDATA #REQUIRED
+    valor  CDATA #REQUIRED
+>
+
+<!ELEMENT ciclo (sumar, mostrar+)>
+<!ATTLIST ciclo
+    veces CDATA #REQUIRED
+>
+
+<!ELEMENT sumar EMPTY>
+<!ATTLIST sumar
+    a         CDATA #REQUIRED
+    b         CDATA #REQUIRED
+    resultado CDATA #REQUIRED
+>
+
+<!ELEMENT mostrar EMPTY>
+<!ATTLIST mostrar
+    value CDATA #IMPLIED
+    valor CDATA #IMPLIED
+>
+
+<!ELEMENT condicional (mostrar+)>
+<!ATTLIST condicional
+    nombre CDATA #REQUIRED
+    valor  CDATA #REQUIRED
+>

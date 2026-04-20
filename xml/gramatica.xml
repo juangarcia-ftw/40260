@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gramatica SYSTEM "gramatica.dtd">
+
+<programa>
+    <variable nombre="x" valor="5"/>
+    
+    <ciclo veces="3">
+        <sumar a="x" b="1" resultado="x"/>
+        <mostrar value="Valor de x:"/>
+        <mostrar value="x"/>
+    </ciclo>
+
+    <condicional nombre="x" valor="8">
+        <mostrar valor="x llegó a 8"/>
+    </condicional>
+</programa>
