@@ -1,34 +1,62 @@
 let resultado = document.getElementById("resultado")
 let botones = document.getElementsByTagName("button")
+
+let prm1
+let operador = ""
+
 for (const key in botones) {
     if (Object.prototype.hasOwnProperty.call(botones, key)) {
         const boton = botones[key];
+
         if (boton.className != "operadores")
             boton.addEventListener("click", pintar)
         else
-            boton.addEventListener("click", pintar2)
-        // console.log(boton)
+            boton.addEventListener("click", operaciones)
     }
 }
 
 function pintar(e) {
-    console.log(e.target.innerText)
     resultado.value += e.target.innerText
 }
 
-function pintar2(e) {
-    console.log(e.target.innerText)
-    if (e.target.innerText == "+")
-        suma()
-}
+function operaciones(e) {
 
-let prm1
-function suma(){
-    prm1 = resultado.value
-    resultado.value = ""
-}
+    let op = e.target.innerText
 
-function igual() {
-    prm2 = resultado.value
-    resultado.value = parseInt(prm1) + parseInt(prm2)
+    // limpiar
+    if (op == "Ce") {
+        resultado.value = ""
+        prm1 = ""
+        operador = ""
+        return
+    }
+
+    // guardar operador
+    if (op == "+" || op == "-" || op == "*" || op == "/") {
+        prm1 = resultado.value
+        operador = op
+        resultado.value = ""
+        return
+    }
+
+    // igual
+    if (op == "=") {
+
+        let prm2 = resultado.value
+        let res
+
+        if (operador == "+")
+            res = parseFloat(prm1) + parseFloat(prm2)
+
+        if (operador == "-")
+            res = parseFloat(prm1) - parseFloat(prm2)
+
+        if (operador == "*")
+            res = parseFloat(prm1) * parseFloat(prm2)
+
+        if (operador == "/")
+            res = parseFloat(prm1) / parseFloat(prm2)
+
+        resultado.value = res
+    }
 }
